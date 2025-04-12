@@ -137,6 +137,7 @@ body{
   border-radius: .5em;
   background: none;
   cursor: pointer;
+  display: none;
 
   svg{
     transition: rotate 150ms ease;
@@ -1033,56 +1034,75 @@ ul li {
   margin-top: 20px; /* Add spacing above the video */
 }
 
-@media (max-width: 768px) {
-.page1, .hometext, video {
-  overflow: hidden; /* Prevent horizontal overflow for these sections */
-}
-
-/* Responsive styles for mobile */
-
-  .page1 {
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center;
+@media(max-width: 800px){
+  body{
+    grid-template-columns: 1fr;
   }
-
-  .hometext h1 {
-    font-size: 2rem; /* Reduce font size for smaller screens */
-    margin-bottom: 2px;
+  main{
+    padding: 2em 1em 60px 1em;
   }
-
-  .hometext p {
-    font-size: 1rem; /* Adjust paragraph font size */
-    margin-bottom: 5px;
+  .container{
+    border: none;
+    padding: 0;
   }
+  #sidebar{
+    height: 60px;
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid var(--line-clr);
+    padding: 0;
+    position: fixed;
+    top: unset;
+    bottom: 0;
 
-  .hometext .cta {
-    font-size: 1rem; /* Adjust button font size */
-    padding: 6px 12px; /* Adjust button padding */
-    margin-bottom: 10px;
-  
-  }
+    > ul{
+      padding: 0;
+      display: grid;
+      grid-auto-columns: 60px;
+      grid-auto-flow: column;
+      align-items: center;
+      overflow-x: scroll;
+    }
+    ul li{
+      height: 100%;
+    }
+    ul a, ul .dropdown-btn{
+      width: 60px;
+      height: 60px;
+      padding: 0;
+      border-radius: 0;
+      justify-content: center;
+    }
 
-  .homevideo video {
-    max-width: 75%; /* Ensure video fits within the screen */
-    height: auto;
-    margin-left: 50px;
-    padding-top: 0px;
-    margin-bottom: 50px;
-  }
-}
+    ul li span, ul li:first-child, .dropdown-btn svg:last-child{
+      display: none;
+    }
 
-@media (max-width: 480px) {
-  .hometext h1 {
-    font-size: 1.5rem; /* Further reduce font size for very small screens */
-  }
+    ul li .sub-menu.show{
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      box-sizing: border-box;
+      height: 60px;
+      width: 100%;
+      background-color: var(--hover-clr);
+      border-top: 1px solid var(--line-clr);
+      display: flex;
+      justify-content: center;
 
-  .hometext p {
-    font-size: 0.9rem; /* Adjust paragraph font size */
-  }
-
-  .hometext .cta {
-    font-size: 0.9rem; /* Adjust button font size */
-    padding: 6px 12px; /* Adjust button padding */
+      > div{
+        overflow-x: auto;
+      }
+      li{
+        display: inline-flex;
+      }
+      a{
+        box-sizing: border-box;
+        padding: 1em;
+        width: auto;
+        justify-content: center;
+      }
+    }
   }
 }
 .animals img{
@@ -1191,6 +1211,9 @@ ul li {
   background-color: var(--base-clr2);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.faq-section p{
+  color: var(--base-clr);
 }
 
 .faq-section h1 {
