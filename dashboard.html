@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Products</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="app.js" defer></script>
   <script src="dashboard.js" type="module" defer></script>
-  <script src="cart.js" defer></script>
+  <script src="cart.js" type="module" defer></script>
 </head>
 <body>
   
@@ -255,9 +255,7 @@
         <input type="hidden" name="access_key" value="1173dc62-d80a-489f-b626-2fb4ff413d14">
 
         <label for="order" id="order-label">Order:</label>
-        <textarea id="order-list" name="order-list" readonly rows="5" style="width: 100%; resize: none;">
-          <!-- Bullet list of products will be dynamically added here -->
-        </textarea>
+        <textarea id="order-list" name="order-list" readonly rows="5" style="width: 100%; resize: none;" required></textarea>
 
         <label for="full-name">Full Name:</label>
         <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required />
@@ -270,7 +268,7 @@
 
         <div class="form-buttons">
           <button type="button" id="cancel-checkout">Cancel</button>
-          <button type="submit" id="confirm-checkout" disabled>Confirm</button> <!-- Initially disabled -->
+          <button type="submit" id="confirm-checkout">Confirm</button> <!-- Initially disabled -->
         </div>
       </form>
     </div>
@@ -278,3 +276,4 @@
 
 </body>
 </html>
+``` 
