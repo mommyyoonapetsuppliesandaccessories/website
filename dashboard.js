@@ -62,9 +62,36 @@ confirmBtn.addEventListener('click', () => {
   popup.classList.add('hidden');
 });
 
+// Select the checkout form and confirm button
+const checkoutForm = document.getElementById("checkout-form");
+const confirmCheckoutButton = document.getElementById("confirm-checkout");
+
+// Get all required inputs in the form
+const requiredInputs = checkoutForm.querySelectorAll("input[required], textarea[required]");
+
+// Function to check if all required inputs are filled
+const checkFormValidity = () => {
+  let isValid = true;
+
+  requiredInputs.forEach((input) => {
+    if (!input.value.trim()) {
+      isValid = false;
+    }
+  });
+
+  // Enable or disable the confirm button based on form validity
+  confirmCheckoutButton.disabled = !isValid;
+};
+
+// Add event listeners to all required inputs
+requiredInputs.forEach((input) => {
+  input.addEventListener("input", checkFormValidity);
+});
+
+// Initial check on page load
+checkFormValidity();
+
 // Select the checkout form and modal elements
-const checkoutForm = document.getElementById('checkout-form');
-const confirmCheckoutButton = document.getElementById('confirm-checkout');
 const checkoutInputs = checkoutForm.querySelectorAll('input');
 const checkoutModal = document.getElementById('checkout-modal');
 
@@ -73,54 +100,7 @@ const checkoutButton = document.querySelector('.checkOut');
 const cancelCheckoutButton = document.getElementById('cancel-checkout');
 
 // Variable to store the timer ID
-let confirmButtonTimer;
 
-// Function to disable the confirm button and start the timer
-function startConfirmButtonTimer() {
-  // Clear any existing timer to prevent multiple timers
-  if (confirmButtonTimer) {
-    clearInterval(confirmButtonTimer);
-  }
-
-  confirmCheckoutButton.disabled = true; // Disable the button
-  confirmCheckoutButton.textContent = 'Please wait 5 seconds...'; // Update button text
-
-  let timer = 5; // Set the timer to 5 seconds
-  confirmButtonTimer = setInterval(() => {
-    timer -= 1;
-    confirmCheckoutButton.textContent = `Please wait ${timer} seconds...`;
-
-    if (timer === 0) {
-      clearInterval(confirmButtonTimer); // Stop the timer
-      confirmButtonTimer = null; // Reset the timer ID
-      confirmCheckoutButton.disabled = false; // Enable the button
-      confirmCheckoutButton.textContent = 'Confirm'; // Reset button text
-    }
-  }, 1000); // Update every second
-}
-
-// Add event listeners to reset the timer whenever the form is edited
-checkoutInputs.forEach(input => {
-  input.addEventListener('input', () => {
-    startConfirmButtonTimer(); // Restart the timer on input change
-  });
-});
-
-// Show the checkout modal when the "Check Out" button is clicked
-checkoutButton.addEventListener('click', () => {
-  populateCartItems(); // Populate the cart items in the modal
-  checkoutModal.classList.remove('hidden'); // Show the modal
-  startConfirmButtonTimer(); // Start the timer when the modal is opened
-});
-
-// Hide the checkout modal when the "Cancel" button is clicked
-cancelCheckoutButton.addEventListener('click', () => {
-  checkoutModal.classList.add('hidden'); // Hide the modal
-  if (confirmButtonTimer) {
-    clearInterval(confirmButtonTimer); // Clear the timer if the modal is closed
-    confirmButtonTimer = null; // Reset the timer ID
-  }
-});
 
 // Function to show a thank-you notification after checkout
 function showThankYouNotification() {
