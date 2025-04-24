@@ -2,28 +2,22 @@ function filterProducts(category) {
   const allProducts = document.querySelectorAll('.product-card');
   allProducts.forEach((product) => {
     if (category === 'all' || product.classList.contains(category)) {
-      product.style.display = 'flex'; // Use 'flex' to maintain layout
+      product.style.display = 'flex';
     } else {
-      product.style.display = 'none'; // Hide non-matching products
+      product.style.display = 'none';
     }
   });
 }
 
-// Select all filter buttons
 const filterButtons = document.querySelectorAll('.filter-buttons button');
 
-// Add event listeners to each button
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
-    // Remove the active class from all buttons
     filterButtons.forEach(btn => btn.classList.remove('active'));
-
-    // Add the active class to the clicked button
     button.classList.add('active');
   });
 });
 
-// Ensure the buttons are properly connected to the function
 document.querySelectorAll('.filter-buttons button').forEach(button => {
   button.addEventListener('click', () => {
     const category = button.getAttribute('onclick').match(/'([^']+)'/)[1];
@@ -31,45 +25,21 @@ document.querySelectorAll('.filter-buttons button').forEach(button => {
   });
 });
 
-// Select all "Add to Cart" buttons
-const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-
-// Select the pop-up and confirm button
 const popup = document.getElementById('popup-notification');
 const confirmBtn = document.getElementById('confirm-btn');
 
-// Add event listeners to each "Add to Cart" button
-addToCartButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const product = {
-      name: button.dataset.name,
-      price: parseFloat(button.dataset.price),
-      image: button.dataset.image,
-    };
-    addToCart(product);
-    showPopup();
-  });
-});
-
-// Function to show the pop-up
 function showPopup() {
-  console.log('showPopup called'); // Debugging statement
   popup.classList.remove('hidden');
 }
 
-// Event listener to hide the pop-up when the confirm button is clicked
 confirmBtn.addEventListener('click', () => {
   popup.classList.add('hidden');
 });
 
-// Select the checkout form and confirm button
 const checkoutForm = document.getElementById("checkout-form");
 const confirmCheckoutButton = document.getElementById("confirm-checkout");
-
-// Get all required inputs in the form
 const requiredInputs = checkoutForm.querySelectorAll("input[required], textarea[required]");
 
-// Function to check if all required inputs are filled
 const checkFormValidity = () => {
   let isValid = true;
 
@@ -79,35 +49,22 @@ const checkFormValidity = () => {
     }
   });
 
-  // Enable or disable the confirm button based on form validity
   confirmCheckoutButton.disabled = !isValid;
 };
 
-// Add event listeners to all required inputs
 requiredInputs.forEach((input) => {
   input.addEventListener("input", checkFormValidity);
 });
 
-// Initial check on page load
 checkFormValidity();
 
-// Select the checkout form and modal elements
 const checkoutInputs = checkoutForm.querySelectorAll('input');
 const checkoutModal = document.getElementById('checkout-modal');
-
-// Select the checkout button and modal elements
 const checkoutButton = document.querySelector('.checkOut');
 const cancelCheckoutButton = document.getElementById('cancel-checkout');
 
-// Variable to store the timer ID
-
-
-// Function to show a thank-you notification after checkout
 function showThankYouNotification() {
-  // Close the checkout modal
   checkoutModal.classList.add('hidden');
-
-  // Create the thank-you notification
   const thankYouPopup = document.createElement('div');
   thankYouPopup.classList.add('popup');
   thankYouPopup.innerHTML = `
@@ -116,21 +73,15 @@ function showThankYouNotification() {
       <button id="close-thank-you">OK</button>
     </div>
   `;
-
-  // Append the notification to the body
   document.body.appendChild(thankYouPopup);
-
-  // Add event listener to close the notification
   const closeThankYouButton = document.getElementById('close-thank-you');
   closeThankYouButton.addEventListener('click', () => {
-    thankYouPopup.remove(); // Remove the notification from the DOM
+    thankYouPopup.remove();
   });
 }
 
-// Handle checkout form submission
 checkoutForm.addEventListener('submit', async (e) => {
-  e.preventDefault(); // Prevent default form submission
-
+  e.preventDefault();
   const formData = new FormData(checkoutForm);
 
   try {
@@ -140,19 +91,12 @@ checkoutForm.addEventListener('submit', async (e) => {
     });
 
     if (response.ok) {
-      // Close the checkout modal
       checkoutModal.classList.add('hidden');
-
-      // Append the notification to the body
       document.body.appendChild(thankYouPopup);
-
-      // Add event listener to close the notification
       const closeThankYouButton = document.getElementById('close-thank-you');
       closeThankYouButton.addEventListener('click', () => {
-        thankYouPopup.remove(); // Remove the notification from the DOM
+        thankYouPopup.remove();
       });
-
-      // Reset the form
       checkoutForm.reset();
     } else {
       console.error('Error: Response not OK', response.statusText);
@@ -163,9 +107,7 @@ checkoutForm.addEventListener('submit', async (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Check if the notification has already been shown
   if (!localStorage.getItem('dashboardNotificationShown')) {
-    // Create the notification
     const notificationPopup = document.createElement('div');
     notificationPopup.classList.add('popup');
     notificationPopup.innerHTML = `
@@ -174,85 +116,117 @@ document.addEventListener('DOMContentLoaded', () => {
         <button id="close-notification">OK</button>
       </div>
     `;
-
-    // Append the notification to the body
     document.body.appendChild(notificationPopup);
-
-    // Add event listener to close the notification
     const closeNotificationButton = document.getElementById('close-notification');
     closeNotificationButton.addEventListener('click', () => {
-      notificationPopup.remove(); // Remove the notification from the DOM
-      localStorage.setItem('dashboardNotificationShown', 'true'); // Mark the notification as shown
+      notificationPopup.remove();
+      localStorage.setItem('dashboardNotificationShown', 'true');
     });
   }
 });
 
-// Example cart data (replace this with your actual cart logic)
-const cart = new Map();
+// Array to store cart items
+let cart = [];
 
-// Function to add items to the cart
-// This function takes a product object as input and adds it to the cart.
-// If the product already exists in the cart, it increments its quantity.
-// Otherwise, it adds the product to the cart with an initial quantity of 1.
-function addToCart(product) {
-  if (cart.has(product.name)) {
-    const existingProduct = cart.get(product.name);
-    if (typeof existingProduct.quantity === 'number') {
-      existingProduct.quantity += 1; // Increment quantity if the product already exists
-    } else {
-      existingProduct.quantity = 1; // Initialize quantity if it doesn't exist
-    }
-  } else {
-    cart.set(product.name, { ...product, quantity: 1 }); // Add new product to the cart
-  }
+// Function to render the cart
+function renderCart() {
+  const cartList = document.querySelector('.listCart');
+  const totalPriceElement = document.querySelector('.total-price');
+
+  // Clear the cart list
+  cartList.innerHTML = '';
+
+  // Calculate total price
+  let totalPrice = 0;
+
+  // Render each item in the cart
+  cart.forEach(item => {
+    const cartItem = document.createElement('div');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `
+      <p>${item.name} - ₱${item.price}</p>
+      <button class="remove-btn" data-id="${item.id}">Remove</button>
+    `;
+    cartList.appendChild(cartItem);
+    totalPrice += parseFloat(item.price);
+  });
+
+  // Update total price
+  totalPriceElement.textContent = `Total Price: ₱${totalPrice.toFixed(2)}`;
+
+  // Add event listeners to remove buttons
+  document.querySelectorAll('.remove-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.getAttribute('data-id');
+      removeFromCart(productId);
+    });
+  });
 }
 
-// Function to populate the cart items in the checkout modal as non-editable input fields
+// Function to add a product to the cart
+function addToCart(product) {
+  cart.push(product);
+  renderCart();
+}
+
+// Function to remove a product from the cart
+function removeFromCart(productId) {
+  cart = cart.filter(item => item.id !== productId);
+  renderCart();
+}
+
+// Add event listeners to "Add to Cart" buttons
+document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const productId = button.getAttribute('data-id');
+    const productName = button.getAttribute('data-name');
+    const productPrice = button.getAttribute('data-price');
+
+    // Create a product object
+    const product = {
+      id: productId,
+      name: productName,
+      price: productPrice,
+    };
+
+    // Add the product to the cart
+    addToCart(product);
+
+    // Optional: Show a notification
+    alert(`${productName} has been added to the cart!`);
+  });
+});
+
 function populateCartItems() {
-  const cartSummary = document.getElementById('cart-summary'); // Cart summary container
-  const cartItemsField = document.getElementById('cart-items'); // Hidden input field for email submission
-
-  // Clear the cart summary container
+  const cartSummary = document.getElementById('cart-summary');
+  const cartItemsField = document.getElementById('cart-items');
   cartSummary.innerHTML = '';
-
-  // Generate a summary of the cart items
   let cartItemsText = '';
 
   cart.forEach((item) => {
-    // Create a non-editable input field for each cart item
     const itemInput = document.createElement('input');
     itemInput.type = 'text';
     itemInput.value = `${item.name} - ${item.quantity} x ₱${item.price.toFixed(2)}`;
-    itemInput.readOnly = true; // Make the input field non-editable
-    itemInput.classList.add('cart-item-input'); // Add a class for styling
-
-    // Append the input field to the cart summary container
+    itemInput.readOnly = true;
+    itemInput.classList.add('cart-item-input');
     cartSummary.appendChild(itemInput);
-
-    // Add the item to the hidden input field for email submission
     cartItemsText += `${item.name} - ${item.quantity} x ₱${item.price.toFixed(2)}\n`;
   });
 
-  // Update the hidden input field with the cart items
   cartItemsField.value = cartItemsText;
 }
 
-// Populate the cart items when the checkout modal is opened
 checkoutButton.addEventListener('click', () => {
-  populateCartItems(); // Populate the cart items in the modal
-  checkoutModal.classList.remove('hidden'); // Show the modal
+  populateCartItems();
+  checkoutModal.classList.remove('hidden');
 });
 
-// Hide the checkout modal when the "Cancel" button is clicked
 cancelCheckoutButton.addEventListener('click', () => {
-  checkoutModal.classList.add('hidden'); // Hide the modal
+  checkoutModal.classList.add('hidden');
 });
 
-// Hide the checkout modal when the "Confirm" button is clicked
 confirmCheckoutButton.addEventListener('click', () => {
   checkoutModal.classList.add('hidden');
-
-  // Create the thank-you notification
   const thankYouPopup = document.createElement('div');
   thankYouPopup.classList.add('popup');
   thankYouPopup.innerHTML = `
@@ -261,13 +235,29 @@ confirmCheckoutButton.addEventListener('click', () => {
       <button id="close-thank-you">OK</button>
     </div>
   `;
-
-  // Append the notification to the body
   document.body.appendChild(thankYouPopup);
-
-  // Add event listener to close the notification
   const closeThankYouButton = document.getElementById('close-thank-you');
   closeThankYouButton.addEventListener('click', () => {
-    thankYouPopup.remove(); // Remove the notification from the DOM
+    thankYouPopup.remove();
   });
 });
+
+// Add event listeners to all "Details" buttons
+document.querySelectorAll('.details-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const detailsList = button.parentElement.nextElementSibling; // Get the <ul> element
+
+    if (detailsList.classList.contains('visible')) {
+      detailsList.style.height = '0'; // Collapse the list
+      detailsList.classList.remove('visible');
+      button.textContent = 'Details'; // Update button text
+    } else {
+      detailsList.style.height = `${detailsList.scrollHeight}px`; // Expand the list
+      detailsList.classList.add('visible');
+      button.textContent = 'Hide Details'; // Update button text
+    }
+  });
+});
+
+
+
