@@ -71,167 +71,242 @@
           </div>
       </header>
 
-    <div class="cartTab">
-      <h1>Shopping Cart</h1>
-      <div class="listCart"></div>
-      <div class="total-price">Total Price: ₱0.00</div> <!-- Total price element -->
-      <div class="btn">
-        <button class="close">CLOSE</button>
-        <button class="checkOut">Check Out</button>
-      </div>
-    </div>
+    
 
     <div id="contentTab">
-      <div class="filter-buttons">
-        <button onclick="filterProducts('cat')">Cat Food</button>
-        <button onclick="filterProducts('dog')">Dog Food</button>
-        <button onclick="filterProducts('all')">All</button>
-      </div>
       <div class="products">
-        <!-- Cat Food Products -->
-        <div class="product-card cat">
+        <!-- Product 1 -->
+        <div class="product-card dog">
           <div class="product-image">
-            <img src="images/1.png" />
+            <img src="images/1.jpg" alt="Special Dog Lamb & Rice for Adult">
           </div>
           <div class="product-details">
-            <div class="product-title">
-              <h3>Aozi Kitten Tuna Flavor Dry Cat Food 1Kg</h3>
-            </div>
-            <div class="product-info">
-              <p>₱250.00</p>
-              <button class="add-to-cart-btn" data-id="1" data-name="Aozi Kitten Tuna Flavor Dry Cat Food 1Kg" data-price="250.00" data-image="images/1.png">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card cat">
-          <div class="product-image">
-            <img src="images/2.png" />
-          </div>
-          <div class="product-details">
-            <div class="product-title">
-              <h3>Cutiez Catz Cat Food Tuna Flavored 1Kg</h3>
-            </div>
-            <div class="product-info">
-              <p>₱250.00</p>
-              <button class="add-to-cart-btn" data-id="2" data-name="Cutiez Catz Cat Food Tuna Flavored 1Kg" data-price="250.00" data-image="images/2.png">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card cat">
-          <div class="product-image">
-            <img src="images/8.png" />
-          </div>
-          <div class="product-details">
-            <div class="product-title">
-              <h3>Power Cat Fresh Ocean Tuna Cat Dry Food 1Kg</h3>
-            </div>
-            <div class="product-info">
-              <p>₱250.00</p>
-              <button class="add-to-cart-btn" data-id="8" data-name="Power Cat Fresh Ocean Tuna Cat Dry Food 1Kg" data-price="250.00" data-image="images/8.png">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card cat">
-          <div class="product-image">
-            <img src="images/9.png" />
-          </div>
-          <div class="product-details">
-            <div class="product-title">
-              <h3>Power Cat Kitten Dry Cat Food 1Kg</h3>
-            </div>
-            <div class="product-info">
-              <p>₱250.00</p>
-              <button class="add-to-cart-btn" data-id="9" data-name="Power Cat Kitten Dry Cat Food 1Kg" data-price="250.00" data-image="images/9.png">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card cat">
-          <div class="product-image">
-            <img src="images/10.png" />
-          </div>
-          <div class="product-details">
-            <div class="product-title">
-              <h3>Special Cat All Life Stages Chicken and Turkey Dry Cat Food 1Kg</h3>
-            </div>
-            <div class="product-info">
-              <p>₱250.00</p>
-              <button class="add-to-cart-btn" data-id="10" data-name="Special Cat All Life Stages Chicken and Turkey Dry Cat Food 1Kg" data-price="250.00" data-image="images/10.png">Add to Cart</button>
-            </div>
+            <span class="product-title">
+              <h3>Special Dog Lamb & Rice for Adult 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱140.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="1" data-name="Special Dog Lamb & Rice for Adult 1Kg" data-price="140.00" data-image="images/1.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>Hypo-allergenic & Low Cholesterol Formula</li>
+              <li>High quality ingredients</li>
+              <li>No dyes & preservatives</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Dog Food Products -->
+        <!-- Product 2 -->
         <div class="product-card dog">
           <div class="product-image">
-            <img src="images/3.png" />
+            <img src="images/2.jpg" alt="Special Dog Lamb & Rice for Puppy 1Kg">
           </div>
           <div class="product-details">
-            <div class="product-title">
-              <h3>Hollistic Recipe Adult Dog Food 1Kg</h3>
-            </div>
-            <div class="product-info">
-              <p>₱250.00</p>
-              <button class="add-to-cart-btn" data-id="3" data-name="Hollistic Recipe Adult Dog Food 1Kg" data-price="250.00" data-image="images/3.png">Add to Cart</button>
-            </div>
+            <span class="product-title">
+              <h3>Special Dog Lamb & Rice for Puppy 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱1450.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="2" data-name="Special Dog Lamb & Rice for Puppy 1Kg" data-price="145.00" data-image="images/2.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>Hypo-Allergenic</li>
+              <li>High quality ingredients</li>
+              <li>No dyes & preservatives</li>
+            </ul>
           </div>
         </div>
+
+        <!-- Product 3 -->
         <div class="product-card dog">
           <div class="product-image">
-            <img src="images/4.png" />
+            <img src="images/3.png" alt="Topbreed Puppy Dog Meal 1Kg">
           </div>
           <div class="product-details">
-            <div class="product-title">
-              <h3>Holistic Recipe Puppy/Pregnant Lamb Meal and Rice Dry Dog Food 1Kg</h3>
-            </div>
-            <div class="product-info">
-              <p>₱250.00</p>
-              <button class="add-to-cart-btn" data-id="4" data-name="Holistic Recipe Puppy/Pregnant Lamb Meal and Rice Dry Dog Food 1Kg" data-price="250.00" data-image="images/4.png">Add to Cart</button>
-            </div>
+            <span class="product-title">
+              <h3>Topbreed Puppy Dog Meal 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱105.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="3" data-name="Topbreed Puppy Dog Meal 1Kg" data-price="300.00" data-image="images/3.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>High quality ingridients</li>
+              <li>Supports a shiny coat</li>
+              <li>Good choice for puppies</li>
+            </ul>
           </div>
         </div>
+
         <div class="product-card dog">
           <div class="product-image">
-            <img src="images/5.png" />
+            <img src="images/4.png" alt="Topbreed Adult Dog Meal 1Kg">
           </div>
           <div class="product-details">
-            <div class="product-title">
-              <h3>Pedigree Adult Mini - Beef Lamb and Vegetables - Dry Dog Food 1Kg</h3>
-            </div>
-            <div class="product-info">
-              <p>₱250.00</p>
-              <button class="add-to-cart-btn" data-id="5" data-name="Pedigree Adult Mini - Beef Lamb and Vegetables - Dry Dog Food 1Kg" data-price="250.00" data-image="images/5.png">Add to Cart</button>
-            </div>
+            <span class="product-title">
+              <h3>Topbreed Adult Dog Meal 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱90.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="4" data-name="Topbreed Adult Dog Meal 1Kg" data-price="90.00" data-image="images/4.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>High quality ingridients</li>
+              <li>Supports a shiny coat</li>
+              <li>Good choice for puppies</li>
+            </ul>
           </div>
         </div>
-        <div class="product-card dog">
+
+        <div class="product-card cat">
           <div class="product-image">
-            <img src="images/6.png" />
+            <img src="images/.png" alt="Topbreed Puppy Dog Meal 1Kg">
           </div>
           <div class="product-details">
-            <div class="product-title">
-            <h3>Pedigree Adult 1+ Years Chicken & Vegetables Flavor 1Kg</h3>
-            </div>
-            <div class="product-info">
-            <p>₱250.00</p>
-            <button class="add-to-cart-btn" data-id="6" data-name="Pedigree Adult 1+ Years Chicken & Vegetables Flavor 1Kg" data-price="250.00" data-image="images/6.png">Add to Cart</button>
-            </div>
+            <span class="product-title">
+              <h3>Topbreed Puppy Dog Meal 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱105.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="3" data-name="Topbreed Puppy Dog Meal 1Kg" data-price="300.00" data-image="images/3.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>High quality ingridients</li>
+              <li>Supports a shiny coat</li>
+              <li>Good choice for puppies</li>
+            </ul>
           </div>
         </div>
-        <div class="product-card dog">
+
+        <div class="product-card cat">
           <div class="product-image">
-            <img src="images/7.png" />
+            <img src="images/3.png" alt="Topbreed Puppy Dog Meal 1Kg">
           </div>
           <div class="product-details">
-            <div class="product-title">
-            <h3>Pedigree Puppy Mini Milk Dry Dog Food 1Kg</h3>
-            </div>
-            <div class="product-info">
-            <p>₱250.00</p>
-            <button class="add-to-cart-btn" data-id="7" data-name="Pedigree Puppy Mini Milk Dry Dog Food 1Kg" data-price="250.00" data-image="images/7.png">Add to Cart</button>
-            </div>
+            <span class="product-title">
+              <h3>Topbreed Puppy Dog Meal 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱105.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="3" data-name="Topbreed Puppy Dog Meal 1Kg" data-price="300.00" data-image="images/3.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>High quality ingridients</li>
+              <li>Supports a shiny coat</li>
+              <li>Good choice for puppies</li>
+            </ul>
           </div>
         </div>
+
+        <div class="product-card cat">
+          <div class="product-image">
+            <img src="images/3.png" alt="Topbreed Puppy Dog Meal 1Kg">
+          </div>
+          <div class="product-details">
+            <span class="product-title">
+              <h3>Topbreed Puppy Dog Meal 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱105.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="3" data-name="Topbreed Puppy Dog Meal 1Kg" data-price="300.00" data-image="images/3.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>High quality ingridients</li>
+              <li>Supports a shiny coat</li>
+              <li>Good choice for puppies</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card cat">
+          <div class="product-image">
+            <img src="images/3.png" alt="Topbreed Puppy Dog Meal 1Kg">
+          </div>
+          <div class="product-details">
+            <span class="product-title">
+              <h3>Topbreed Puppy Dog Meal 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱105.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="3" data-name="Topbreed Puppy Dog Meal 1Kg" data-price="300.00" data-image="images/3.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>High quality ingridients</li>
+              <li>Supports a shiny coat</li>
+              <li>Good choice for puppies</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card cat">
+          <div class="product-image">
+            <img src="images/3.png" alt="Topbreed Puppy Dog Meal 1Kg">
+          </div>
+          <div class="product-details">
+            <span class="product-title">
+              <h3>Topbreed Puppy Dog Meal 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱105.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="3" data-name="Topbreed Puppy Dog Meal 1Kg" data-price="300.00" data-image="images/3.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>High quality ingridients</li>
+              <li>Supports a shiny coat</li>
+              <li>Good choice for puppies</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="product-card cat">
+          <div class="product-image">
+            <img src="images/3.png" alt="Topbreed Puppy Dog Meal 1Kg">
+          </div>
+          <div class="product-details">
+            <span class="product-title">
+              <h3>Topbreed Puppy Dog Meal 1Kg</h3>
+            </span>
+            <span class="product-info">
+              <p>₱105.00</p>
+              <button class="details-btn">Details</button>
+              <button class="add-to-cart-btn" data-id="3" data-name="Topbreed Puppy Dog Meal 1Kg" data-price="300.00" data-image="images/3.jpg">Add to Cart</button>
+            </span>
+            <ul class="product-details-list hidden">
+              <li>High quality ingridients</li>
+              <li>Supports a shiny coat</li>
+              <li>Good choice for puppies</li>
+            </ul>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+        
       </div>
+    </div>
+  </div>
+
+  <div class="cartTab">
+    <h1>Shopping Cart</h1>
+    <div class="listCart"></div>
+    <div class="total-price">Total Price: ₱0.00</div> <!-- Total price element -->
+    <div class="btn">
+      <button class="close">CLOSE</button>
+      <button class="checkOut">Check Out</button>
     </div>
   </div>
 
@@ -276,4 +351,3 @@
 
 </body>
 </html>
-``` 
