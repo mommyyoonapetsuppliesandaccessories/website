@@ -371,68 +371,7 @@ body.activeTabCart .cartTab {
   color: black; /* Change text color to black */
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduce the minimum width */
-  gap: 15px; /* Reduce the gap between product cards */
-  margin-top: 20px;
-}
 
-/* Ensure all product cards have the same size */
-.product-card {
-  display: flex;
-  flex-direction: column; /* Stack child elements vertically */
-  justify-content: space-between; /* Space out elements */
-  align-items: center; /* Center align content */
-  border: 1px solid #ddd; /* Add a border */
-  border-radius: 5px; /* Add rounded corners */
-  overflow: hidden; /* Prevent content from spilling out */
-  padding: 8px; /* Reduce padding */
-  background-color: #fff; /* Set background color */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effects */
-}
-
-.product-card img {
-  max-width: 100%; /* Ensure images fit within the card */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 100px; /* Limit the height of the images */
-}
-
-.product-details {
-  width: 100%; /* Ensure details take full width */
-  text-align: center; /* Center align text */
-}
-
-.product-title h3 {
-  font-size: 1rem; /* Reduce font size */
-  margin-bottom: 8px; /* Add spacing below title */
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column; /* Stack price and button vertically */
-  align-items: center; /* Center align content */
-  gap: 8px; /* Reduce spacing between elements */
-}
-
-.product-info p {
-  font-size: 0.9rem; /* Reduce font size for price */
-  margin: 0; /* Remove default margin */
-}
-
-.product-info button {
-  padding: 8px 12px; /* Reduce padding for better clickability */
-  font-size: 0.8rem; /* Reduce font size */
-  background-color: #007bff; /* Button background color */
-  color: white; /* Button text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Add rounded corners */
-  cursor: pointer; /* Add pointer cursor */
-}
-
-.product-info button:hover {
-  background-color: #0056b3; /* Darker background on hover */
-}
 
 /* Style for cart item buttons */
 .cart-item {
@@ -1599,5 +1538,117 @@ ul li {
   .mini-section p {
     font-size: 0.75rem;
   }
+}
+
+/* Products Section */
+.products {
+  display: flex;
+  flex-direction: column; /* Stack products vertically */
+  gap: 15px; /* Add spacing between product cards */
+  width: 100%; /* Ensure the section takes up the full width */
+  padding: 10px; /* Add padding inside the section */
+  box-sizing: border-box; /* Include padding in width calculations */
+}
+
+/* Product Card */
+.product-card {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: flex-start; /* Align items to the left */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensure the product card takes up the full width */
+  box-sizing: border-box; /* Include padding in width calculations */
+  overflow: hidden; /* Prevent content overflow */
+  position: relative; /* Ensure the card's position is relative */
+  transition: box-shadow 0.3s ease; /* Smooth shadow animation */
+}
+
+/* Expanded Product Card */
+.product-card.expanded {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a stronger shadow when expanded */
+}
+
+/* Product Details List */
+.product-details-list {
+  margin: 10px 0;
+  padding-left: 20px;
+  font-size: 12px; /* Smaller font size for details */
+  color: #555;
+  height: 0; /* Initially hidden */
+  overflow: hidden; /* Hide overflowing content */
+  opacity: 0; /* Make it invisible initially */
+  transition: height 0.3s ease, opacity 0.3s ease; /* Smooth animation */
+}
+
+/* Visible Details */
+.product-details-list.visible {
+  height: auto; /* Expand to fit content */
+  opacity: 1; /* Make it visible */
+}
+
+/* Product Image */
+.product-image img {
+  width: 80px; /* Adjust image size */
+  height: auto;
+  border-radius: 8px;
+  margin-right: 15px; /* Add spacing between image and text */
+}
+
+/* Product Details */
+.product-details {
+  display: flex;
+  flex-direction: column; /* Stack title and info vertically */
+  flex: 1; /* Allow details to take up remaining space */
+  text-align: left; /* Align text to the left */
+}
+
+/* Product Title */
+.product-title h3 {
+  font-size: 14px; /* Smaller font size for title */
+  color: #333;
+  margin: 0 0 5px; /* Add spacing below the title */
+}
+
+/* Product Info */
+.product-info p {
+  font-size: 12px; /* Smaller font size for price */
+  color: #555;
+  margin: 0;
+}
+
+.product-info button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px; /* Adjust padding */
+  font-size: 12px; /* Smaller font size for button */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.product-info button:hover {
+  background: #0056b3;
+}
+
+/* Product Details List */
+.product-details-list {
+  margin: 10px 0;
+  padding-left: 20px;
+  font-size: 12px; /* Smaller font size for details */
+  color: #555;
+  height: 0; /* Initially hidden */
+  overflow: hidden; /* Hide overflowing content */
+  opacity: 0; /* Make it invisible initially */
+  transition: height 0.3s ease, opacity 0.3s ease; /* Smooth animation */
+}
+
+.product-details-list.visible {
+  height: auto; /* Expand to fit content */
+  opacity: 1; /* Make it visible */
 }
 
